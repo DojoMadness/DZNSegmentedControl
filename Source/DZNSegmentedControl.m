@@ -467,6 +467,9 @@
     }
     
     [self insertAllSegments];
+    
+    // reset tint color to configure selected images
+    self.tintColor = self.tintColor;
 }
 
 - (void)setTintColor:(UIColor *)color
@@ -476,6 +479,8 @@
     }
     
     [super setTintColor:color];
+    
+    _selectionIndicator.backgroundColor = color;
     
     if (self.isImageMode) {
 
@@ -724,10 +729,6 @@
             }
             else {
                 [attributedString addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(0, string.length)];
-                
-                if (state == UIControlStateSelected) {
-                    self.selectionIndicator.backgroundColor = color;
-                }
             }
         }
         else {
@@ -857,7 +858,6 @@
 - (void)configureAccessoryViews
 {
     self.selectionIndicator.frame = [self selectionIndicatorRect];
-    self.selectionIndicator.backgroundColor = self.tintColor;
     
     self.hairline.frame = [self hairlineRect];
 }
