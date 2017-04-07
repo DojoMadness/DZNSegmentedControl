@@ -60,6 +60,8 @@ enum {
 @property (nonatomic) BOOL adjustsButtonTopInset;
 /** YES if the selected segment is user interaction disabled. NO if touching the segment button should still forward the actions to its targets without animating the selection indicator. Default is YES. */
 @property (nonatomic) BOOL disableSelectedSegment;
+/** The content edge insets of the buttons in the control. Default is UIEdgeInsetsZero. */
+@property (nonatomic) UIEdgeInsets contentEdgeInsets;
 
 /**
  Initializes and returns a segmented control with segments having the given titles or images.

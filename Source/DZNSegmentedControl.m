@@ -93,6 +93,8 @@
     _colors = [NSMutableDictionary new];
     _counts = [NSMutableArray array];
     
+    _contentEdgeInsets = UIEdgeInsetsZero;
+    
     _initializing = NO;
 }
 
@@ -815,6 +817,13 @@
     [self layoutSubviews];
 }
 
+- (void)setContentEdgeInsets:(UIEdgeInsets)contentEdgeInsets
+{
+    _contentEdgeInsets = contentEdgeInsets;
+    
+    [self configureSegments];
+}
+
 
 #pragma mark - DZNSegmentedControl Configuration
 
@@ -841,6 +850,7 @@
     button.clipsToBounds = YES;
     button.adjustsImageWhenHighlighted = NO;
     button.exclusiveTouch = YES;
+    button.contentEdgeInsets = self.contentEdgeInsets;
     button.tag = segment;
     
     [self insertSubview:button belowSubview:self.selectionIndicator];
@@ -849,6 +859,7 @@
 - (void)configureSegments
 {
     for (UIButton *button in [self buttons]) {
+        button.contentEdgeInsets = self.contentEdgeInsets;
         [self configureButtonForSegment:button.tag];
     }
     
