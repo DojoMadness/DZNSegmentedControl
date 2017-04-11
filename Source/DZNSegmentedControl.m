@@ -94,6 +94,7 @@
     _counts = [NSMutableArray array];
     
     _contentEdgeInsets = UIEdgeInsetsZero;
+    _animateSelectionOnTap = YES;
     
     _initializing = NO;
 }
@@ -931,7 +932,7 @@
     UIButton *button = (UIButton *)sender;
     
     if (self.selectedSegmentIndex != button.tag) {
-        [self setSelectedSegmentIndex:button.tag animated:YES];
+        [self setSelectedSegmentIndex:button.tag animated:self.animateSelectionOnTap];
         [self sendActionsForControlEvents:UIControlEventValueChanged];
     }
     else if (!self.disableSelectedSegment) {

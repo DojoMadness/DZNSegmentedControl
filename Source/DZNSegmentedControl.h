@@ -62,6 +62,8 @@ enum {
 @property (nonatomic) BOOL disableSelectedSegment;
 /** The content edge insets of the buttons in the control. Default is UIEdgeInsetsZero. */
 @property (nonatomic) UIEdgeInsets contentEdgeInsets;
+/** YES to animate the selection when tapping a segment. Default is YES. */
+@property (nonatomic) BOOL animateSelectionOnTap;
 
 /**
  Initializes and returns a segmented control with segments having the given titles or images.
