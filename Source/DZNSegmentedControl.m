@@ -94,7 +94,7 @@
     _counts = [NSMutableArray array];
     
     _contentEdgeInsets = UIEdgeInsetsZero;
-    _animateSelectionOnTap = YES;
+    _animatesSelectionOnTap = YES;
     
     _initializing = NO;
 }
@@ -825,6 +825,11 @@
     [self configureSegments];
 }
 
+- (void)setAnimatesSelectionOnTap:(BOOL)animatesSelectionOnTap
+{
+    _animatesSelectionOnTap = animatesSelectionOnTap;
+}
+
 
 #pragma mark - DZNSegmentedControl Configuration
 
@@ -932,7 +937,7 @@
     UIButton *button = (UIButton *)sender;
     
     if (self.selectedSegmentIndex != button.tag) {
-        [self setSelectedSegmentIndex:button.tag animated:self.animateSelectionOnTap];
+        [self setSelectedSegmentIndex:button.tag animated:self.animatesSelectionOnTap];
         [self sendActionsForControlEvents:UIControlEventValueChanged];
     }
     else if (!self.disableSelectedSegment) {
